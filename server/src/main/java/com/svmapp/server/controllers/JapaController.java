@@ -84,11 +84,12 @@ public class JapaController  implements JapaService{
 		return null;
 	}
 
-	@PostMapping(path={"/insert-japadetails"},consumes={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public Japaflow insertJapadetails(Japaflow japadetails) {
+	@PostMapping(consumes={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public Japaflow insertJapadetails(@RequestBody Japaflow japadetails) {
 		// TODO Auto-generated method stub
 		// make a call to service implementation provided in svmapp-repo
-		return null;
+		System.out.println(japadetails.getName());
+		return japadetails;
 	}
 
 	@Override
