@@ -1,12 +1,7 @@
 package com.svmapp.repo.db;
 
-import java.util.Set;
-
-import org.sql2o.Connection;
-
 import com.svmapp.model.ApiResponse;
 import com.svmapp.model.Japaflow;
-import com.svmapp.repo.utils.RepositoryException;
 import com.svmapp.services.JapaService;
 public class JapaServiceImpl extends EntityServiceImpl<Japaflow> implements JapaService {
 
