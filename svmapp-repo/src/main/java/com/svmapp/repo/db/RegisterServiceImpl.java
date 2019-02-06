@@ -1,11 +1,18 @@
 package com.svmapp.repo.db;
 
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import com.svmapp.model.RegisteredUser;
 import com.svmapp.services.RegistrationService;
 
+@Repository
+@Service
+@Transactional
 public class RegisterServiceImpl extends EntityServiceImpl<RegisteredUser> implements RegistrationService {
 
 	private Sql2o sql2o = new Sql2o("jdbc:mysql://localhost:3306/krishna_mantra", "root", "rootadmin");
