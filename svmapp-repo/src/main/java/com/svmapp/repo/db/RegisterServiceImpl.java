@@ -19,6 +19,7 @@ public class RegisterServiceImpl extends EntityServiceImpl<RegisteredUser> imple
 
 	@Override
 	public RegisteredUser getRegisteredUser(String contactNumber) {
+		System.out.println(contactNumber+" Contact");
 		// TODO Auto-generated method stub
 		// connection to database can be achieved from this repo
 		String sql = "SELECT * FROM registrations where contact_number=:contact_number";
