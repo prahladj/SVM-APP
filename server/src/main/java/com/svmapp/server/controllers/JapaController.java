@@ -1,9 +1,11 @@
 package com.svmapp.server.controllers;
 
 
+import java.sql.Date;
 import java.util.Collection;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,12 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.svmapp.model.ApiResponse;
 import com.svmapp.model.Japaflow;
+import com.svmapp.model.ResponseModel;
+import com.svmapp.repo.db.JapaServiceImpl;
 import com.svmapp.services.JapaService;
 
 @RestController
 @RequestMapping("/japa")
-public class JapaController  implements JapaService{
+public class JapaController implements JapaService{
 
+	@Autowired
+	JapaService japaService;
+	
 	@Override
 	public ApiResponse setState(String entityId, String state, Object value) {
 		// TODO Auto-generated method stub
@@ -61,7 +68,7 @@ public class JapaController  implements JapaService{
 	}
 
 	@Override
-	public Collection<Japaflow> get(Map<String, String> query, int pageNo, int pageSize) {
+	public Collection<Japaflow> get(Map<String, String> query) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -78,12 +85,15 @@ public class JapaController  implements JapaService{
 		return null;
 	}
 
-	@PostMapping(consumes={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public Japaflow insertJapadetails(@RequestBody Japaflow japadetails) {
+	@PostMapping(path={"/updateJapaCount/"},produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	@Override
+	public ResponseModel insertJapadetails(@RequestBody Japaflow japadetails) {
 		// TODO Auto-generated method stub
 		// make a call to service implementation provided in svmapp-repo
-		System.out.println(japadetails.getName());
-		return japadetails;
+//		System.out.println(japadetails.getName());
+		japaService = new JapaServiceImpl();
+		ResponseModel model = japaService.insertJapadetails(japadetails);
+		return model;
 	}
 
 	@Override
@@ -94,6 +104,12 @@ public class JapaController  implements JapaService{
 
 	@Override
 	public ApiResponse deleteJapadetails(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Japaflow getJapaDetails(Date date, String booklet_language, String booklet_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -5,6 +5,7 @@ public class RegisteredUser extends Entity {
 	private String name;
 	private String gender;
 	private String contact_number;
+	private String booklet_language;
 	private String booklet_id;
 	private String address;
 	private String email;
@@ -31,6 +32,12 @@ public class RegisteredUser extends Entity {
 	}
 	public void setContact_number(String contact_number) {
 		this.contact_number = contact_number;
+	}
+	public String getBooklet_language() {
+		return booklet_language;
+	}
+	public void setBooklet_language(String booklet_language) {
+		this.booklet_language = booklet_id;
 	}
 	public String getBooklet_id() {
 		return booklet_id;

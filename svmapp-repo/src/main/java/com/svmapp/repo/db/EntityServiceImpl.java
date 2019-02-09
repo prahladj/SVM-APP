@@ -3,11 +3,15 @@ package com.svmapp.repo.db;
 import java.util.Collection;
 import java.util.Map;
 
+import org.sql2o.Sql2o;
+
 import com.svmapp.model.ApiResponse;
 import com.svmapp.model.Entity;
 import com.svmapp.services.EntityService;
 
 public class EntityServiceImpl<T extends Entity> implements EntityService<T> {
+
+	protected Sql2o sql2o = new Sql2o("jdbc:mysql://localhost:3306/krishna_mantra", "root", "rootadmin");
 
 	@Override
 	public ApiResponse setState(String entityId, String state, Object value) {
@@ -44,18 +48,18 @@ public class EntityServiceImpl<T extends Entity> implements EntityService<T> {
 	}
 
 	@Override
-	public Collection<T> get(Map<String, String> query, int pageNo, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public T get(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public ApiResponse delete(T entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<T> get(Map<String, String> query) {
 		// TODO Auto-generated method stub
 		return null;
 	}

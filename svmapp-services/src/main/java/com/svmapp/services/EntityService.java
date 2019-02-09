@@ -14,6 +14,6 @@ public interface EntityService<T extends Entity> {
 	public T update(T entity);
 	public ApiResponse delete(T entity);
 	public ApiResponse delete(Collection<String> ids);
-	public Collection<T> get(Map<String, String> query,int pageNo, int pageSize);
+	public Collection<T> get(Map<String, String> query);
 	public T get(String id);
 }
