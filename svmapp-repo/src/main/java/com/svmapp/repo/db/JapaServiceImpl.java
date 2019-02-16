@@ -1,6 +1,7 @@
 package com.svmapp.repo.db;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -11,7 +12,6 @@ import org.sql2o.Query;
 
 import com.svmapp.model.ApiResponse;
 import com.svmapp.model.Japaflow;
-import com.svmapp.model.RegisteredUser;
 import com.svmapp.model.ResponseModel;
 import com.svmapp.services.JapaService;
 
@@ -19,12 +19,6 @@ import com.svmapp.services.JapaService;
 @Service
 @Transactional
 public class JapaServiceImpl extends EntityServiceImpl<Japaflow> implements JapaService {
-
-	@Override
-	public Japaflow getCount(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ResponseModel insertJapadetails(Japaflow japadetails) {
@@ -63,10 +57,14 @@ public class JapaServiceImpl extends EntityServiceImpl<Japaflow> implements Japa
 		Japaflow flow = null;
 		String sql = "SELECT * FROM japa_count WHERE booklet_language = :booklet_language AND "
 				+ "booklet_id = :booklet_id AND date = :date";
+		String dateString = date.toString();
+		System.out.println("dateSTring "+dateString);
 		try (Connection con = sql2o.open()) {
-			flow = con.createQuery(sql).addParameter("booklet_language", booklet_language)
+			List<Japaflow> flows = con.createQuery(sql).addParameter("booklet_language", booklet_language)
 					.addParameter("booklet_id", booklet_id)
-					.addParameter("date", date).executeAndFetch(Japaflow.class).get(0);
+					.addParameter("date", date).executeAndFetch(Japaflow.class);
+			if(flows !=null && flows.size()!=0)
+				flow = flows.get(0);
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,5 +76,35 @@ public class JapaServiceImpl extends EntityServiceImpl<Japaflow> implements Japa
 	public ApiResponse deleteJapadetails(Long id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Japaflow> getJapaDetails(String booklet_language, String booklet_id) {
+		List<Japaflow> flows = null;
+		String sql = "SELECT * FROM japa_count WHERE booklet_language = :booklet_language AND "
+				+ "booklet_id = :booklet_id ORDER BY date DESC";
+		try (Connection con = sql2o.open()) {
+			flows = con.createQuery(sql).addParameter("booklet_language", booklet_language)
+					.addParameter("booklet_id", booklet_id).executeAndFetch(Japaflow.class);
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return flows;
+	}
+
+	@Override
+	public int getCount(String booklet_language, String booklet_id) {
+		Integer count = 0;
+		String sql = "SELECT SUM(count) FROM japa_count WHERE booklet_language= :booklet_language"
+				+ " AND booklet_id= :booklet_id;";
+		try (Connection con = sql2o.open()) {
+			count = con.createQuery(sql).addParameter("booklet_language", booklet_language)
+					.addParameter("booklet_id", booklet_id).executeScalar(Integer.class);
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
 	}
 }

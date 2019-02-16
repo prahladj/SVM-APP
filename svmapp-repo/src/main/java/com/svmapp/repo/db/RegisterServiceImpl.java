@@ -22,10 +22,33 @@ public class RegisterServiceImpl extends EntityServiceImpl<RegisteredUser> imple
 
 	@Override
 	public List<RegisteredUser> getRegisteredUser(String contactNumber) {
+		if(contactNumber.length()>=10) {
+			contactNumber = contactNumber.substring(contactNumber.length()-10, 10);
+		}
 		System.out.println(contactNumber+" Contact");
-		String sql = "SELECT * FROM registrations where contact_number=:contact_number";
+		String sql = "SELECT * FROM registrations where contact_number like :contact_number";
 		try (Connection con = sql2o.open()) {
-			users = con.createQuery(sql).addParameter("contact_number", "9480861850")
+			users = con.createQuery(sql)
+					.addParameter("contact_number",  "%" + contactNumber)
+					.executeAndFetch(RegisteredUser.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
+
+	@Override
+	public List<RegisteredUser> getRegisteredUser(String contactNumber, String booklet_id) {
+		if(contactNumber.length()>=10) {
+			contactNumber = contactNumber.substring(contactNumber.length()-10, 10);
+		}
+		System.out.println(contactNumber+" Contact");
+		String sql = "SELECT * FROM registrations where contact_number like :contact_number AND"
+				+ " booklet_id=:booklet_id";
+		try (Connection con = sql2o.open()) {
+			users = con.createQuery(sql)
+					.addParameter("contact_number", "%" + contactNumber)
+					.addParameter("booklet_id", booklet_id)
 					.executeAndFetch(RegisteredUser.class);
 		} catch (Exception e) {
 			e.printStackTrace();

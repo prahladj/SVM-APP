@@ -2,6 +2,7 @@ package com.svmapp.model;
 
 
 public class RegisteredUser extends Entity {
+	private int id;
 	private String name;
 	private String gender;
 	private String contact_number;
@@ -15,6 +16,12 @@ public class RegisteredUser extends Entity {
 	private String upadesha;
 	private String additional_info;
 
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -37,7 +44,7 @@ public class RegisteredUser extends Entity {
 		return booklet_language;
 	}
 	public void setBooklet_language(String booklet_language) {
-		this.booklet_language = booklet_id;
+		this.booklet_language = booklet_language;
 	}
 	public String getBooklet_id() {
 		return booklet_id;

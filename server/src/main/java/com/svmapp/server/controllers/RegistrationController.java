@@ -66,10 +66,8 @@ public class RegistrationController implements RegistrationService {
 		return null;
 	}
 
-	@PostMapping(path={"/getBookletsbyPhno/"},produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	@Override
 	public Collection<RegisteredUser> get(@RequestBody Map<String, String> query) {
-		// TODO Auto-generated method stub
 		service = new RegisterServiceImpl();
 		List<RegisteredUser> users = service.getRegisteredUser(query.get("contact_number"));
 		return users;
@@ -88,5 +86,22 @@ public class RegistrationController implements RegistrationService {
 	public List<RegisteredUser> getRegisteredUser(String contactNumber) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	/**
+	 * Returns the booklets registered for that contact number, provided the booklet_id
+	 * matches one of the booklet_id registered for that contact number.
+	 * 
+	 * This call serves the purpose of authenticating the user as well
+	 * @param contactNumber
+	 * @param booklet_id
+	 * @return
+	 */
+	@PostMapping(path={"/getBookletsbyPhno/"},produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	@Override
+	public List<RegisteredUser> getRegisteredUser(String contactNumber, String booklet_id) {
+		service = new RegisterServiceImpl();
+		List<RegisteredUser> users = service.getRegisteredUser(contactNumber, booklet_id);
+		return users;
 	}
 }

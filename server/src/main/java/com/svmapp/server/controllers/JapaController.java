@@ -3,6 +3,7 @@ package com.svmapp.server.controllers;
 
 import java.sql.Date;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import com.svmapp.services.JapaService;
 
 @RestController
 @RequestMapping("/japa")
-public class JapaController implements JapaService{
+public class JapaController implements JapaService {
 
 	@Autowired
 	JapaService japaService;
@@ -79,18 +80,10 @@ public class JapaController implements JapaService{
 		return null;
 	}
 
-	@Override
-	public Japaflow getCount(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@PostMapping(path={"/updateJapaCount/"},produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	@Override
 	public ResponseModel insertJapadetails(@RequestBody Japaflow japadetails) {
-		// TODO Auto-generated method stub
 		// make a call to service implementation provided in svmapp-repo
-//		System.out.println(japadetails.getName());
 		japaService = new JapaServiceImpl();
 		ResponseModel model = japaService.insertJapadetails(japadetails);
 		return model;
@@ -108,10 +101,38 @@ public class JapaController implements JapaService{
 		return null;
 	}
 
+	@PostMapping(path={"/getJapaDetails/"},produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	//Date in yyyy-mm-dd format
 	@Override
 	public Japaflow getJapaDetails(Date date, String booklet_language, String booklet_id) {
-		// TODO Auto-generated method stub
-		return null;
+		japaService = new JapaServiceImpl();
+		Japaflow flow = japaService.getJapaDetails(date, booklet_language, booklet_id);
+		if(flow == null) {
+			//Send Japaflow with count as 0. This means, user haven't added his count for that day
+			flow = new Japaflow();
+			flow.setBooklet_id(booklet_id);
+			flow.setBooklet_language(booklet_language);;
+			flow.setDate(date);
+			flow.setCount((long) 0);
+		}
+		return flow;
+	}
+
+	@PostMapping(path={"/getJapaHistory/"},produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	//Date in yyyy-mm-dd format
+	@Override
+	public List<Japaflow> getJapaDetails(String booklet_language, String booklet_id) {
+		japaService = new JapaServiceImpl();
+		List<Japaflow> flows = japaService.getJapaDetails(booklet_language, booklet_id);
+		return flows;
+	}
+
+	@PostMapping(path={"/getJapaCount/"},produces={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	@Override
+	public int getCount(String booklet_language, String booklet_id) {
+		japaService = new JapaServiceImpl();
+		int count = japaService.getCount(booklet_language, booklet_id);
+		return count;
 	}
 
 }
