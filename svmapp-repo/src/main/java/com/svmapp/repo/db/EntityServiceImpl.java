@@ -11,7 +11,9 @@ import com.svmapp.services.EntityService;
 
 public class EntityServiceImpl<T extends Entity> implements EntityService<T> {
 
-	protected Sql2o sql2o = new Sql2o("jdbc:mysql://localhost:3306/krishna_mantra", "root", "rootadmin");
+//	protected Sql2o sql2o = new Sql2o("jdbc:mysql://localhost:3306/krishna_mantra", "root", "rootadmin");
+	protected Sql2o sql2o = new Sql2o("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_0383875f447e33b?reconnect=true", 
+			"bcb0601c221b2d", "6a3dfa5e");
 
 	@Override
 	public ApiResponse setState(String entityId, String state, Object value) {

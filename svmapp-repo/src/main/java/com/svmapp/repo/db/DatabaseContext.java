@@ -18,9 +18,13 @@ public class DatabaseContext implements TransactionManagementConfigurer{
 	   public DataSource dataSource() {
 	      final BasicDataSource dataSource = new BasicDataSource();
 	      dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-	      dataSource.setUrl("jdbc:mysql://localhost:3306/krishna_mantra");
+	      /*dataSource.setUrl("jdbc:mysql://localhost:3306/krishna_mantra");
 	      dataSource.setUsername("root");
-	      dataSource.setPassword("rootadmin");
+	      dataSource.setPassword("rootadmin");*/
+	      
+	      dataSource.setUrl("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_0383875f447e33b?reconnect=true");
+	      dataSource.setUsername("bcb0601c221b2d");
+	      dataSource.setPassword("6a3dfa5e");
 	      return dataSource;
 	   }
 
