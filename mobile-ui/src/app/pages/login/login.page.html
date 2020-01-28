@@ -1,0 +1,93 @@
+<ion-content padding-top>
+    <ion-row class="ion-justify-content-center ion-padding flex-column ion-align-items-center">
+        <img src="../../../assets/custom-icons/logo.png" width="80">
+
+        <h4>Welcome to <strong class="text-primary">Vyasaraja Matha</strong></h4>
+
+        <small class="light-text">Tag line goes here</small>
+    </ion-row>
+
+    <ion-list padding class="ion-no-margin">
+        <ion-item class="no-item-padding">
+            <ion-label position="floating">Enter Phone Number</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ng-container *ngIf="otpEnabled">
+            <ion-item class="no-item-padding">
+                <ion-label position="floating">Enter OTP</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+        </ng-container>
+    </ion-list>
+
+    <ng-container *ngIf="otpEnabled">
+        <ion-button color="primary" fill="clear" expand="block" class="ion-margin-horizontal">
+            <!-- <strong class="ion-margin-horizontal">Resend OTP ?</strong> -->
+            Resend OTP ?
+        </ion-button>
+    </ng-container>
+
+    <ng-container *ngIf="!otpEnabled">
+        <ion-button color="primary" expand="block" class="ion-margin-horizontal" (click)="enableOTP()">
+            <strong class="ion-margin-horizontal">Generate OTP</strong>
+            <ion-icon name="md-arrow-round-forward"></ion-icon>
+        </ion-button>
+    </ng-container>
+
+    <ng-container *ngIf="otpEnabled">
+        <ion-button color="primary" expand="block" class="ion-margin-horizontal" routerLink="/menu/first">
+            <strong class="ion-margin-horizontal">Login to SVM</strong>
+        </ion-button>
+    </ng-container>
+</ion-content>
+
+<ion-footer class="b-t ion-padding-top">
+    <ion-row class="login-with-section ion-justify-content-between">
+        <div class="login-with-section-lines bg-light"></div>
+        <ion-button disabled color="dark" size="small" class="login-with" fill="clear">Login with</ion-button>
+        <div class="login-with-section-lines bg-light"></div>
+    </ion-row>
+
+
+    <ion-button expand="block" class="ion-margin facebook-btn" style="--background: var(--facebook-btn)">
+        <ion-icon name="logo-facebook"></ion-icon>
+        <strong class="ion-margin-horizontal">Login with Facebook</strong>
+    </ion-button>
+
+    <ion-button expand="block" class="ion-margin google-btn" style="--background: var(--google-btn)">
+        <ion-icon name="logo-google"></ion-icon>
+        <strong class="ion-margin-horizontal">Login with Google</strong>
+    </ion-button>
+</ion-footer>
+
+<!-- <ion-content>
+    <div class="login-page">
+        <div class="login-page-details">
+            <div class="logo"></div>
+            <p>LOGIN</p>
+        </div>
+        <ion-item color="itemColor">
+            <ion-label position="floating">Mobile number</ion-label>
+            <ion-input type="number"></ion-input>
+        </ion-item>
+
+        <ion-button type="button" color="primary">GENERATE OTP</ion-button>
+
+        <ion-row class="login-btn-row">
+            <ion-button color="light" fill="outline" routerLink="/menu/first">Login</ion-button>
+        </ion-row>
+    </div>
+
+    <ion-row>
+        <ion-button color="light" fill="clear">
+            <img src="../../../assets/custom-icons/google.svg" width="30px">
+        </ion-button>
+        <ion-button color="light" fill="clear">
+            <img src="../../../assets/custom-icons/facebook.svg" width="30px">
+        </ion-button>
+    </ion-row>
+    <ion-button color="danger" class="register-btn">
+        <ion-icon name="add"></ion-icon>
+    </ion-button>
+</ion-content> -->

@@ -1,0 +1,71 @@
+<ion-split-pane>
+    <ion-menu contentId="content">
+        <ion-header>
+            <ion-toolbar color="danger">
+                <ion-title>Sri Sosale Vyasaraja Matha</ion-title>
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-content>
+            <ion-list>
+                <ion-item tappable>
+                    <ion-icon name="md-home" slot="start"></ion-icon>
+                    Home
+                </ion-item>
+
+                <ion-item tappable>
+                    <ion-icon name="md-list-box" slot="start"></ion-icon>
+                    Panchanga
+                </ion-item>
+
+                <ion-item tappable>
+                    <ion-icon name="md-person" slot="start"></ion-icon>
+                    Sri Vyasarajaru
+                </ion-item>
+
+                <ion-item tappable>
+                    <ion-icon name="md-calendar" slot="start"></ion-icon>
+                    Aradhane
+                </ion-item>
+
+                <ion-item tappable>
+                    <ion-icon name="md-grid" slot="start"></ion-icon>
+                    Ekadashi & Vishnu Panchaka
+                </ion-item>
+
+                <ion-item tappable>
+                    <ion-icon name="md-leaf" slot="start"></ion-icon>
+                    Krishna Mantra
+                </ion-item>
+
+                <ion-item tappable>
+                    <ion-icon name="md-mic" slot="start"></ion-icon>
+                    e-Paatha
+                </ion-item>
+
+                <ion-item tappable>
+                    <ion-icon name="md-play" slot="start"></ion-icon>
+                    Google Play Store
+                </ion-item>
+
+                <ion-item tappable>
+                    <ion-icon name="md-contacts" slot="start"></ion-icon>
+                    About Us
+                </ion-item>
+
+                <ion-item tappable>
+                    <ion-icon name="md-globe" slot="start"></ion-icon>
+                    Change Language
+                </ion-item>
+
+                <ion-item tappable routerLink="/login" routerDirection="root">
+                    <ion-icon name="md-power" slot="start"></ion-icon>
+                    Logout
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="content" main></ion-router-outlet>
+
+</ion-split-pane>
