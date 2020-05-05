@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="menu/first/tabs/tab1"></ion-back-button>
+        </ion-buttons>
+        <ion-title>About <b>{{vyasarajaru.name}}</b></ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="bg-white light-black-text">
+        <ion-card-content>
+            <ion-text class="about-text"><b>{{vyasarajaru.name}}</b></ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.born}}</ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.resting_place}}</ion-text>
+
+            <ion-text class="about-text"><img src="../../../assets/images/{{vyasarajaru.image}}"></ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.more_info_1}}</ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.more_info_2}}</ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.more_info_3}}</ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.more_info_4}}</ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.more_info_5}}</ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.more_info_6}}</ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.more_info_7}}</ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.more_info_8}}</ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.more_info_9}}</ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.more_info_10}}</ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.more_info_11}}</ion-text>
+
+            <ion-text text-center color="primary" class="about-text">
+                <b class="d-block">{{vyasarajaru.more_info_12}}</b>
+                <b class="d-block">{{vyasarajaru.more_info_13}}</b>
+            </ion-text>
+
+            <ion-text class="about-text">{{vyasarajaru.more_info_14}}</ion-text>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+
+<ion-footer>
+    <audio controls class="charma-shloka">
+        <source src="../../../assets/charama_shloka/{{vyasarajaru.charama_shloka}}" type="audio/mpeg">
+        <source src="../../../assets/charama_shloka/{{vyasarajaru.charama_shloka}}" type="audio/ogg">
+    </audio>
+</ion-footer>

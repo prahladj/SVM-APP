@@ -1,0 +1,45 @@
+.p-0 {
+    padding: 0 !important;
+}
+
+table {
+    table-layout: fixed;
+    margin: 10px !important;
+    width: calc(100% - 20px);
+    border-radius: 5px;
+    overflow: hidden;
+    tr:nth-child(odd) {
+        background: #fff3f3;
+    }
+    tr:nth-child(even) {
+        background: #fffafa;
+    }
+    td {
+        font-size: 14px;
+        padding: 8px 10px;
+        text-transform: capitalize;
+    }
+    td:first-child {
+        font-weight: 500;
+        border-right: 1px solid #d4d4d4;
+    }
+}
+
+.text-with-icons {
+    align-items: center;
+    display: flex;
+    font-size: 16px;
+    ion-icon {
+        font-size: 25px;
+        margin-right: 10px;
+    }
+}
+
+.items-with-lines {
+    ion-item {
+        border-bottom: 1px solid #dadada;
+    }
+    ion-item:last-child {
+        border-bottom: 1px solid transparent;
+    }
+}

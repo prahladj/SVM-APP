@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="menu/first/tabs/tab1"></ion-back-button>
+        </ion-buttons>
+        <ion-title>About <b>{{matha.matha_name}}</b></ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="bg-white light-black-text">
+        <ion-card-content class="b-b">
+            <ion-text class="about-text">
+                <h2>About <b>{{matha.matha_name}}</b></h2>
+            </ion-text>
+
+            <img class="mb-1" src="../../../assets/images/about-us-imgs/{{matha.image}}">
+
+            <ion-text class="about-text">{{matha.more_info}}</ion-text>
+        </ion-card-content>
+
+        <ion-card-content class="b-b">
+            <ion-text class="about-text">
+                <h2>About <b>{{matha.current_pontiff}}</b></h2>
+            </ion-text>
+
+            <img class="mb-1" src="../../../assets/images/about-us-imgs/{{matha.current_pontiff_pics}}">
+
+            <ion-text class="about-text">{{matha.current_pontiff_detail}}</ion-text>
+        </ion-card-content>
+
+        <ion-item lines="none">
+            <h6>Contact Information:</h6>
+        </ion-item>
+
+        <ion-item href="mailto:info@srivyasarajamathasosale.org" target="_blank" lines="none">
+            <ion-icon name="md-mail" slot="start" class="gmail"></ion-icon>
+            <ion-label>Write us on Mail</ion-label>
+            <ion-icon name="md-arrow-dropright" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item href="https://www.facebook.com/SriVyasarajaMatha/" target="_blank" lines="none">
+            <ion-icon name="logo-facebook" slot="start" class="facebook"></ion-icon>
+            <ion-label>Find us on Facebook</ion-label>
+            <ion-icon name="md-arrow-dropright" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item href="https://www.youtube.com/srivyasarajamathaadmin/" target="_blank" lines="none">
+            <ion-icon name="logo-youtube" slot="start" class="youtube"></ion-icon>
+            <ion-label>Our Youtube Channel</ion-label>
+            <ion-icon name="md-arrow-dropright" slot="end"></ion-icon>
+        </ion-item>
+    </ion-card>
+</ion-content>
